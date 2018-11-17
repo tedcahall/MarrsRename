@@ -1,0 +1,29 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#title {
+    -fx-font-size: 31px;
+}
+
+.title {
+	-fx-font-family: 'Varela Round';
+    -fx-alignment: left;
+    -fx-font-size: 31px;
+}
+
+.xxbutton {
+  -fx-border-radius: 6px;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-background-color: none;
+  -fx-text-fill: #000000;
+  -fx-cursor: pointer;
+  -fx-padding: 10px 10px 10px 37px;
+  -fx-font-size: 20px;
+
+}
+
+.text {
+	-fx-font-family: 'Varela Round';
+    -fx-alignment: right;
+	-fx-font-size: 18px;
+}
