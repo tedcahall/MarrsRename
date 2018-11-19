@@ -1,29 +1,46 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-#title {
-    -fx-font-size: 31px;
-}
 
 .title {
-	-fx-font-family: 'Varela Round';
-    -fx-alignment: left;
-    -fx-font-size: 31px;
+	-fx-font-family: 'Helvetica';
+    -fx-alignment: center;
+    -fx-font-size: 32px;
 }
 
-.xxbutton {
+.button {
   -fx-border-radius: 6px;
   -fx-border-width: 2px;
   -fx-border-style: solid;
-  -fx-border-color: #fff;
-  -fx-background-color: none;
-  -fx-text-fill: #000000;
+  /* -fx-border-color: #fff; */
+  /* -fx-background-color: none; */
+  /* -fx-text-fill: #000000; */
   -fx-cursor: pointer;
-  -fx-padding: 10px 10px 10px 37px;
+  -fx-padding: 10px 10px 10px 10px;
   -fx-font-size: 20px;
+  -fx-alignment: center;
 
 }
 
+/* text only used for Labels and Buttons - need to add a class to any raw javafx.scene.text.Text */
 .text {
 	-fx-font-family: 'Varela Round';
     -fx-alignment: right;
-	-fx-font-size: 18px;
+	-fx-font-size: 20px;
+}
+
+/* made this the class for javafx.scene.text.Text */
+.text-id {
+	-fx-font-family: 'Helvetica';
+    -fx-alignment: right;
+	-fx-font-size: 20px;
+}
+
+.filename {
+	-fx-font-family: 'Helvetica';
+	-fx-alignment: right;
+	-fx-font-size: 16px;
+}
+
+.text-input {
+	-fx-font-size: 16px;
+	-fx-max-width: 70.0px 
 }

@@ -45,6 +45,7 @@ public class Main extends Application {
 			System.out.println("File: "+fileNames[i]);
 			TextField tf = new TextField();
 			tf.setMaxWidth(40);
+			fn.getStyleClass().add("filename");
 			GridPane.setConstraints(fn, 0, i+1);
 			GridPane.setConstraints(tf, 1, i+1);
 			gp.getChildren().add(fn);
@@ -56,16 +57,20 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Text errorMsg = new Text("");
-			errorMsg.setFont(new Font("Helvetica", 20));
-			errorMsg.setFill(Color.RED);
-			String initDir="/home/cahall/";
 			BorderPane bp = new BorderPane();
+			Scene scene = new Scene(bp,1200,800);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			Text errorMsg = new Text("");
+			// errorMsg.setFont(new Font("Helvetica", 20)); // now set in CSS
+			errorMsg.setFill(Color.RED);
+			errorMsg.getStyleClass().add("text-id"); // connect it to the CSS
+			String initDir="/home/cahall/";
+			// BorderPane bp = new BorderPane();
 			GridPane gp = new GridPane();
 			HBox hb = new HBox();
-			Label raceLabel = new Label("Race ID:");
+			Label raceLabel = new Label("Race ID:");  // oddly styled by the .text class in the CSS
 			TextField raceId = new TextField();
-			raceId.setMaxWidth(50);
+			// raceId.setMaxWidth(50);                // now set in the CSS
 			hb.getChildren().addAll(raceLabel, raceId);
 			hb.setAlignment(Pos.CENTER);
 			// http://tutorials.jenkov.com/javafx/filechooser.html
@@ -75,6 +80,9 @@ public class Main extends Application {
 			dc.setInitialDirectory(new File(initDir));
 			Button fcbtn = new Button("Choose Directory");
 			Text dirText = new Text("Directory: "+initDir);
+			// no great way to style Text with css - unless you bind it to a class ID. :-(
+			// https://stackoverflow.com/questions/35284816/css-for-javafx-scene-text-text
+			dirText.getStyleClass().add("text-id");
 			// fc.showOpenDialog
 			// fc.showOpenMultipleDialog
 			// DirectoryChooser chooser = new DirectoryChooser();
@@ -87,18 +95,20 @@ public class Main extends Application {
 			});
 			// gp.setGridLinesVisible(true);
 			VBox vb = new VBox();
+			vb.setSpacing(6);
 			Text ubuf = new Text("      ");
 			Text title = new Text("MARRS File Rename Utility");
-			
-			title.setFont(new Font("Helvetica", 32));
-			dirText.setFont(new Font("Helvetica", 20));
+			title.getStyleClass().add("title");
+			// title.setFont(new Font("Helvetica", 32));   // now set in the CSS
+			// dirText.setFont(new Font("Helvetica", 20)); // now setting this through CSS with text-id
 			vb.getChildren().addAll(ubuf, title, hb, dirText, fcbtn);
 			// https://stackoverflow.com/questions/35159841/javafx-centering-vbox-inside-gridpane
 			vb.setAlignment(Pos.CENTER);
 			gp.setAlignment(Pos.CENTER);
 			VBox bvb = new VBox();  // bottom VBox
+			bvb.setSpacing(6);
 			bvb.getChildren().add(new Text("   "));
-			bvb.getChildren().add(errorMsg);
+			
 			bvb.setAlignment(Pos.CENTER);
 			Button renameBtn = new Button("Rename the Files");
 			renameBtn.setOnAction(e -> { 
@@ -144,6 +154,7 @@ public class Main extends Application {
 				}
 			});
 			bvb.getChildren().add(renameBtn);
+			bvb.getChildren().add(errorMsg);
 			bp.setTop(vb);
 			bp.setCenter(gp);
 
@@ -151,10 +162,9 @@ public class Main extends Application {
 			BorderPane.setMargin(bp.getBottom(), new Insets(10, 10, 160, 10)); // top, right, bottom, left margins
 			// BorderPane.setAlignment(bp.getTop(), Pos.CENTER); // does not work now that top is a Vbox
 			BorderPane.setAlignment(bp.getBottom(), Pos.CENTER);
-			
 			BorderPane.setAlignment(bp.getCenter(), Pos.CENTER);
-			Scene scene = new Scene(bp,1200,600);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			// Scene scene = new Scene(bp,1200,600);
+			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("MARRS File Rename Utility");
 			primaryStage.setScene(scene);
 			primaryStage.show();
