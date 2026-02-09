@@ -27,7 +27,8 @@ public class Main extends Application {
 
 	
 	public void populateFiles(File dir, GridPane gp) {
-		String[] fileNames = dir.list(); 
+		gp.getChildren().clear();
+		String[] fileNames = dir.list();
 		gp.setHgap(10);
 		Label col1 = new Label("Filename   ");
 		Label col2 = new Label("Group Num");
@@ -151,6 +152,20 @@ public class Main extends Application {
 				}
 			});
 			bvb.getChildren().add(renameBtn);
+			Button startOverBtn = new Button("Start Over");
+			startOverBtn.setOnAction(e -> {
+				gp.getChildren().clear();
+				raceId.clear();
+				errorMsg.setText("");
+				dirText.setText("Directory: "+initDir);
+				dc.setInitialDirectory(new File(initDir));
+				// Remove accumulated "Skipping" messages, keep only spacer, buttons, and error
+				bvb.getChildren().removeIf(node ->
+					node != renameBtn && node != startOverBtn && node != errorMsg
+					&& !(node instanceof Text && ((Text) node).getText().equals("   "))
+				);
+			});
+			bvb.getChildren().add(startOverBtn);
 			bvb.getChildren().add(errorMsg);
 			bp.setTop(vb);
 			bp.setCenter(gp);
