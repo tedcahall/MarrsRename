@@ -62,7 +62,7 @@ public class Main extends Application {
 			// errorMsg.setFont(new Font("Helvetica", 20)); // now set in CSS
 			errorMsg.setFill(Color.RED);
 			errorMsg.getStyleClass().add("text-id"); // connect it to the CSS
-			String initDir="/home/cahall/";
+			String initDir=System.getProperty("user.home");
 			// BorderPane bp = new BorderPane();
 			GridPane gp = new GridPane();
 			HBox hb = new HBox();
