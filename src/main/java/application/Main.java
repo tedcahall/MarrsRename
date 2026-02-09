@@ -7,7 +7,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
+// import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -19,15 +19,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
+// import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 
 public class Main extends Application {
-	public static void main(String[] args) {
-		launch(args);
-	}
-	
+
 	
 	public void populateFiles(File dir, GridPane gp) {
 		String[] fileNames = dir.list(); 
@@ -171,6 +168,10 @@ public class Main extends Application {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
 	}
 
 }

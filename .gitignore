@@ -1,0 +1,24 @@
+# Gradle
+build/
+.gradle/
+
+# Ant build artifacts
+classes/
+dist/
+
+# Compiled class files
+*.class
+
+# Packaged files
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE - Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# IDE - IntelliJ
+.idea/
+*.iml

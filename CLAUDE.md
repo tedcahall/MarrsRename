@@ -8,40 +8,39 @@ MARRS File Rename Utility — a JavaFX 11 desktop GUI application for batch rena
 
 ## Build Commands
 
-The project uses Apache Ant with JavaFX. The JavaFX SDK is expected at `/home/cahall/javafx-sdk-11.0.2/lib/`.
+The project uses Gradle with the OpenJFX plugin. JavaFX dependencies are managed automatically.
 
 ```bash
-# Build and package (default target: compile + JAR + JNLP)
-ant -f build.xml
+# Build (compile + package)
+./gradlew build
 
 # Clean build artifacts
-ant -f build.xml clean
+./gradlew clean
 
 # Compile only
-ant -f build.xml compile
+./gradlew compileJava
 ```
-
-Output: `dist/MarrsRename.jar`
 
 ## Running
 
 ```bash
-java --module-path /home/cahall/javafx-sdk-11.0.2/lib --add-modules javafx.controls -jar dist/MarrsRename.jar
+./gradlew run
 ```
 
 ## Architecture
 
 This is a single-class JavaFX application with no external dependencies beyond JavaFX.
 
-- **`src/application/Main.java`** — The entire application. Extends `javafx.application.Application`. The `start()` method builds all UI (BorderPane layout with directory chooser, file list grid, and rename controls) and contains all business logic inline.
-- **`src/application/application.css`** — JavaFX stylesheet for the UI.
-- **`build.xml`** — Primary Ant build file. Compiles to `classes/`, packages to `dist/`.
+- **`src/main/java/application/Main.java`** — The entire application. Extends `javafx.application.Application`. The `start()` method builds all UI (BorderPane layout with directory chooser, file list grid, and rename controls) and contains all business logic inline.
+- **`src/main/resources/application/application.css`** — JavaFX stylesheet for the UI.
+- **`build.gradle`** — Gradle build file with OpenJFX plugin.
+- **`build.xml`** — Legacy Ant build file (kept for reference).
 - **`buildRacing.xml`** — Legacy Ant build file with Tomcat integration (not actively used).
 - **`MarrsRename.java`** (root) — Unpackaged duplicate of Main.java; not part of the build.
 
 ## Key Details
 
 - IDE: Eclipse (`.project`, `.classpath`, `.settings/` are Eclipse config)
-- No Maven/Gradle — dependencies are manually referenced JARs
+- Gradle with OpenJFX plugin manages JavaFX dependencies
 - No tests exist
 - The initial directory path is hardcoded to `/home/cahall/`
