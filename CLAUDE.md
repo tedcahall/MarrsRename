@@ -36,11 +36,9 @@ This is a single-class JavaFX application with no external dependencies beyond J
 - **`build.gradle`** — Gradle build file with OpenJFX plugin.
 - **`build.xml`** — Legacy Ant build file (kept for reference).
 - **`buildRacing.xml`** — Legacy Ant build file with Tomcat integration (not actively used).
-- **`MarrsRename.java`** (root) — Unpackaged duplicate of Main.java; not part of the build.
-
 ## Key Details
 
 - IDE: Eclipse (`.project`, `.classpath`, `.settings/` are Eclipse config)
 - Gradle with OpenJFX plugin manages JavaFX dependencies
 - No tests exist
-- The initial directory path is hardcoded to `/home/cahall/`
+- The initial directory defaults to the user's home directory via `System.getProperty("user.home")`
